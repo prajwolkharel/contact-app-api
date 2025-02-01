@@ -64,7 +64,7 @@ const loginUser = asyncHandler(async (req, res) => {
 //@route api/users/current
 //@access private
 const currentUser = asyncHandler(async (req, res) => {
-    res.status(200).json(req.user)
+    res.json(req.user)
 });
 
 module.exports = {registerUser, loginUser, currentUser}
