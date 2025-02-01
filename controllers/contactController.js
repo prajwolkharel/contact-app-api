@@ -9,8 +9,13 @@ const getContacts = (req, res) => {
 //@route POST api/contacts
 //@access public
 const createContact = (req, res) => {
-    res.status(201).json({message:"Create new contact"})
-}
+    const {name, email, phone} = req.body
+    if (!name || !email || !phone) {
+        res.status(400);
+        throw new Error("All fields are mandatory!")
+    };
+    res.status(201).json({message:"Create new contact"});
+};
 
 //@desc Get contact
 //@route GET api/contacts/:id
