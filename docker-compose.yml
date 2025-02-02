@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: contact-app
+    ports:
+      - "5001:5001"  # Use the correct port from your server.js or change to 5000 if needed
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=${CONNECTION_STRING}  # Correctly uses .env value
+    volumes:
+      - .:/app  # This allows live code changes (for dev)
+    command: ["npm", "start"]  # Run production build
+    env_file:
+      - .env  # Load environment variables from .env
